@@ -1,0 +1,29 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <button ion-button menuToggle left>
+        <ion-icon class="icono-menu" name="menu"></ion-icon>
+      </button>
+      <ion-title style="float: right">
+        {{nombre}} {{apellido}} 
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen="true" class="content-menu">
+    <ion-list>
+      <button ion-item menuToggle (click)="openPage()">
+        Mi Perfil
+      </button>
+      <button ion-item menuToggle (click)="openPage(pedidoTecnico)">
+        Asignar Pedidos
+      </button>
+      
+
+      <button ion-item menuToggle (click)="salir()">
+        Salir
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+     
+    </ion-buttons>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+   Cerrar Pedido
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>Pedidos:</ion-label>
+    <ion-select>
+      <ion-option >1</ion-option>
+
+    </ion-select>
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="RetiraEquipo">
+      <ion-label>Retira Equipo:</ion-label>
+    <ion-item>
+      <ion-label>Si</ion-label>
+      <ion-radio value="0" checked></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>NO</ion-label>
+      <ion-radio value="0" checked></ion-radio>
+    </ion-item>
+    </ion-list>
+
+    <ion-item>
+        <ion-textarea  [(ngModel)]="txtarea" placeholder="Ingresar Detalle"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+          <button class="boton2 boton-comun" ion-button type="submit" (click)="calificaCliente()">Cerrar Pedido</button>
+        </ion-item>
+</ion-content>

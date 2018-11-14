@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+     
+    </ion-buttons>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+   Asignar Pedidos
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Pedidos:</ion-label>
+
+     <ion-select [(ngModel)]="pedidoseleccionado">
+        <ion-option *ngFor="let PedidosDisponibles of pedidoJson" value={{PedidosDisponibles.PedidoReparacionID}}>{{PedidosDisponibles.Cliente}}-{{PedidosDisponibles.Domicilio}} </ion-option>
+
+      </ion-select>
+
+    </ion-item>
+  </ion-list> 
+<ion-list> 
+  <ion-item>
+  <ion-label>Tecnicos:</ion-label>
+
+   <ion-select [(ngModel)]="tecnicoSeleccionado">
+     <ion-option *ngFor="let tecnicos of tecnicosJson" value={{tecnicos.TecnicoID}}>{{tecnicos.Nombre}},{{tecnicos.Apellido}}</ion-option>
+
+   </ion-select>
+  </ion-item>
+</ion-list> 
+      <ion-item>
+          <button class="boton2 boton-comun" ion-button type="submit" (click)="asignaPedido()">Asignar Pedido</button>
+        </ion-item>
+</ion-content>

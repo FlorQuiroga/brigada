@@ -1,0 +1,98 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+
+    </ion-buttons>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Solicitud de Arreglo
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+     
+      <ion-label >Areas:</ion-label>     
+
+     <ion-select  [(ngModel)]="areaSeleccionada" (ionChange)="cambiarArticulo($event)">
+        <ion-option *ngFor="let areas of objectJson" value={{areas.AreasID}}>{{areas.AreasDescrip}}</ion-option>
+
+      </ion-select> 
+
+
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>Articulos:</ion-label>
+
+     <ion-select [(ngModel)]="articuloSeleccionado">
+        <ion-option *ngFor="let articulos of artAreas" value={{articulos.ArticulosID}}>{{articulos.ArticulosDescrip}}</ion-option>
+
+      </ion-select>
+
+    </ion-item>
+  </ion-list>
+
+
+    <ion-list radio-group [(ngModel)]="domic">
+      <ion-item>
+           <ion-label><h3>Domicilio Cargado</h3>  </ion-label>
+        <ion-radio value="1" checked></ion-radio>
+      </ion-item>
+      </ion-list>
+
+
+
+  <ion-item class="input-form">
+      <div>
+          <input class="inputField border" type="text" placeholder="Calle" required [(ngModel)]="calle" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Calle'" />
+        </div>
+    <!--<ion-input type="text" placeholder="Calle" required [(ngModel)]="calle"></ion-input>-->
+  </ion-item>
+  <ion-item class="input-form">
+      <div>
+          <input class="inputField border" type="text" required [(ngModel)]="calleN" placeholder="Calle Nº" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Calle Nº'" />
+        </div>
+    <!--<ion-input type="text" placeholder="Calle Nº" required [(ngModel)]="calleN"></ion-input>-->
+  </ion-item>
+
+  <ion-item class="input-form">
+
+    <input  class="inputField border" type="text" placeholder="Codigo postal" required [(ngModel)]="CP"/>
+  </ion-item>
+  <ion-item class="input-form">
+
+    <input   class="inputField border"type="text" placeholder="Localidad" required [(ngModel)]="localidad"/>
+  </ion-item>
+
+  <ion-item>
+
+
+    <input  class="inputField border" type="text" placeholder="Provincia" required [(ngModel)]="provincia"/>
+  </ion-item>
+  <ion-item>
+
+
+    <input   class="inputField border" type="text" placeholder="Pais" required [(ngModel)]="Pais"/>
+  </ion-item>
+  <ion-item>
+    <ion-textarea [(ngModel)]="descripcionProb" placeholder="Ingrese descripcion del problema"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+
+
+    <ion-input type="text" placeholder="Horario disponible" required [(ngModel)]="horario"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button class="boton2 boton-comun" ion-button type="submit" (click)="registrarPedido()">Solicitar</button>
+  </ion-item>
+
+</ion-content>

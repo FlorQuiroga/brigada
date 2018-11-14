@@ -1,0 +1,105 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+
+    </ion-buttons>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Clasificacion Clientes
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+
+  <ion-list>
+   <!-- <ion-item>
+      <ion-label>Clientes:</ion-label>
+
+      <ion-select [(ngModel)]="clientesSeleccionado">
+        <ion-option *ngFor="let cliente of clienteJson" value={{cliente.ClienteID}}>{{cliente.Nombre}},{{cliente.Apellido}}</ion-option>
+
+      </ion-select>
+
+
+    </ion-item>-->
+    <ion-item>
+    <ion-label>Clientes:</ion-label>
+    <ion-select>
+      <ion-option >Pedro Gonzalez</ion-option>
+
+    </ion-select>
+  </ion-item>
+  </ion-list>
+  <ion-item>
+    <ion-label>Calificacion</ion-label>
+
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="calificacion">
+    <ion-item>
+      <ion-label>0</ion-label>
+      <ion-radio value="0" checked></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>1</ion-label>
+      <ion-radio value="1"  [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>2</ion-label>
+      <ion-radio value="2" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>3</ion-label>
+      <ion-radio value="3" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>4</ion-label>
+      <ion-radio value="4" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>5</ion-label>
+      <ion-radio value="5" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>6</ion-label>
+      <ion-radio value="6" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>7</ion-label>
+      <ion-radio value="7" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>8</ion-label>
+      <ion-radio value="8" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>9</ion-label>
+      <ion-radio value="9" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>10</ion-label>
+      <ion-radio value="10" [disabled]="isDisabled"></ion-radio>
+    </ion-item>
+
+
+  </ion-list>
+  <ion-item>
+    <ion-textarea  [(ngModel)]="txtarea" placeholder="Ingresar descripcion"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <button class="boton2 boton-comun" ion-button type="submit" (click)="calificaCliente()">Calificar</button>
+  </ion-item>
+</ion-content>
