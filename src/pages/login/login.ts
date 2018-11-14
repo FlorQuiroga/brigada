@@ -79,16 +79,18 @@ export class LoginPage {
     }
     //LOGIN USUARIO
     public login() { 
-if(this.registerCredentials.email="1"){
+if(this.registerCredentials.email=="1"){
 
     this.navCtrl.setRoot(MenuClientePage);
+    this.registerCredentials.email ="";
 }
-else if(this.registerCredentials.email="2") {
+else if(this.registerCredentials.email=="2") {
     this.navCtrl.setRoot(MenuTecnicosPage);
+    this.registerCredentials.email ="";
 }
 else{
     this.navCtrl.setRoot(MenuAdministrativoPage);
-
+    this.registerCredentials.email ="";
 }
 
     //  this.showLoading()
