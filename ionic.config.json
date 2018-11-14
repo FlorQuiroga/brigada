@@ -1,0 +1,7 @@
+{
+  "name": "Tropanerd",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
