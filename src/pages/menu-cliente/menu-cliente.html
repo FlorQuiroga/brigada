@@ -2,26 +2,30 @@
   <ion-header>
     <ion-toolbar>
       <button ion-button menuToggle left>
-        <ion-icon class="icono-menu" name="menu"></ion-icon>
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
       <ion-title style="float: right">
         Clientes
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content fullscreen="true" class="content-menu">
+  <ion-content fullscreen="true" class="content-menu" class="mainMenu">
     <ion-list>
       <button ion-item menuToggle (click)="openPage(miperfil)">
+        <ion-icon name="contact"></ion-icon>
         Mi Perfil
       </button>
       <button ion-item menuToggle (click)="openPage(pedido)">
+        <ion-icon name="mail"></ion-icon>
         Solicitud de Arreglo
       </button>
       <button ion-item menuToggle (click)="openPage(encuestaTecnico)">
+        <ion-icon name="star-outline"></ion-icon>
         Clasificacion Tecnico
       </button>
 
       <button ion-item menuToggle (click)="salir()">
+        <ion-icon name="exit"></ion-icon>
         Salir
       </button>
     </ion-list>

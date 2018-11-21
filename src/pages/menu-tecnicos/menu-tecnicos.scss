@@ -1,0 +1,21 @@
+.mainMenu {
+  background-color: #010101;
+  .item-ios {
+    color: #FFFFFF !important;
+  }
+  .item-md {
+    color: #FFF;
+    background-color: transparent;
+  }
+  ion-icon {
+    color: #f7b810;
+    margin-right: 10px;
+  }
+  button.item-ios:not([detail-none]) .item-inner {
+    background: none;
+    border-color: #f7b810;
+  }
+  .list-ios > .item-block:last-child {
+    border-color: #f7b810;
+  }
+}

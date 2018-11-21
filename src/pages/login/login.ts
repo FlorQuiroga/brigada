@@ -78,7 +78,7 @@ export class LoginPage {
         console.log('ionViewDidLoad LoginPage');
     }
     //LOGIN USUARIO
-    public login() { 
+    public login() {
 if(this.registerCredentials.email=="1"){
 
     this.navCtrl.setRoot(MenuClientePage);
@@ -103,7 +103,7 @@ else{
                     this.loading.setContent("Bienvenido " + this.userService.nombre + " " + this.userService.apellido + ".")
 
                     setTimeout(() => {
-                    
+
                         if (this.userService.tecnicoID != 0) {
                             //ingresa al menu de los tecnicos
 
@@ -119,7 +119,7 @@ else{
                             this.loading.dismiss();
                         }
                         else if (this.userService.usuarioID != 0) {
-                        
+
                             this.navCtrl.setRoot(MenuAdministrativoPage);
 
                             this.loading.dismiss();
@@ -140,7 +140,7 @@ else{
                     this.loading.dismiss();
                     alert("Usuario y/o Pass mal ingresado.");
                 })*/
- 
+
     }
     //muestra mensaje de espera.
     /* login3() {
@@ -155,7 +155,7 @@ else{
           this.loading.setContent("Bienvenido Nombre Cliente.")
           this.navCtrl.setRoot(MenuClientePage);
         this.loading.dismiss();
-  
+
       } */
     showLoading() {
         this.loading = this.loadingCtrl.create({
