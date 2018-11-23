@@ -26,8 +26,6 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#E5E6E9',GradientType=0 );
 }
 
-.bgOrange {background-color: #f7b810;}
-
 .bgWhite {background-color: #FFF;}
 
 .logo {
@@ -37,4 +35,8 @@
   background: url("../../assets/imgs/logo.png") no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+.txtCenter {
+  text-align: center;
 }

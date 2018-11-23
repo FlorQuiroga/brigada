@@ -34,8 +34,9 @@ h2, .txtCenter {
   border: none;
 }
 
-.item-ios.item-block .item-inner {
+.item-ios.item-block .item-inner, .item-md {
   border: none;
+  background-color: transparent;
 }
 
 .inputField {
