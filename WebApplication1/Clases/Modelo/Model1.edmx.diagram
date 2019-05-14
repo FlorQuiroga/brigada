@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b83134d5f37b45cf8b0ae74d91fa2222" Name="Diagram1" ZoomLevel="43">
+        <EntityTypeShape EntityType="TropaNerdModel.Usuarios" Width="1.5" PointX="1" PointY="0.5" />
+        <EntityTypeShape EntityType="TropaNerdModel.Domicilio" Width="1.5" PointX="0.625" PointY="3.5" />
+        <EntityTypeShape EntityType="TropaNerdModel.Areas" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="TropaNerdModel.Encuestas" Width="1.5" PointX="3.375" PointY="7.625" />
+        <EntityTypeShape EntityType="TropaNerdModel.PedidoReparacion" Width="1.5" PointX="4.75" PointY="4.375" />
+        <EntityTypeShape EntityType="TropaNerdModel.PedidoReparacionDetalle" Width="1.5" PointX="2.5" PointY="5" />
+        <EntityTypeShape EntityType="TropaNerdModel.Cliente" Width="1.5" PointX="2.875" PointY="11.125" />
+        <AssociationConnector Association="TropaNerdModel.FK_Cliente_Domicilio" />
+        <AssociationConnector Association="TropaNerdModel.FK_PedidoReparacion_Cliente" />
+        <EntityTypeShape EntityType="TropaNerdModel.Tecnico" Width="1.5" PointX="2.875" PointY="16.25" />
+        <AssociationConnector Association="TropaNerdModel.FK_Tecnico_Domicilio11" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

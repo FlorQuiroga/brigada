@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TropaNerdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TropaNerdEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="ValidaUsuario" ReturnType="Collection(TropaNerdModel.GetValidaUsuario)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="Pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Usuarios" EntityType="TropaNerdModel.Usuarios" />
+    <EntitySet Name="Domicilio" EntityType="TropaNerdModel.Domicilio" />
+    <FunctionImport Name="getAreasALL" ReturnType="Collection(TropaNerdModel.getAreasALL)" />
+    <FunctionImport Name="GetArticulosByArea" ReturnType="Collection(TropaNerdModel.GetArticulosByArea)">
+      <Parameter Name="AreaID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Areas" EntityType="TropaNerdModel.Areas" />
+    <EntitySet Name="Encuestas" EntityType="TropaNerdModel.Encuestas" />
+    <FunctionImport Name="ClientesPerfilUPD">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Mail" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="RazonSocial" Mode="In" Type="String" />
+      <Parameter Name="TipoFactura" Mode="In" Type="String" />
+      <Parameter Name="Calle" Mode="In" Type="String" />
+      <Parameter Name="CalleNro" Mode="In" Type="String" />
+      <Parameter Name="CodigoPostal" Mode="In" Type="String" />
+      <Parameter Name="Localidad" Mode="In" Type="String" />
+      <Parameter Name="Provincia" Mode="In" Type="String" />
+      <Parameter Name="Pais" Mode="In" Type="String" />
+      <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+      <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PedidoReparacionDetalleINS" ReturnType="Collection(Int32)">
+      <Parameter Name="ArticuloID" Mode="In" Type="Int32" />
+      <Parameter Name="Latitud" Mode="In" Type="String" />
+      <Parameter Name="Longitud" Mode="In" Type="String" />
+      <Parameter Name="AreasID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PedidoReparacionINS">
+      <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+      <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="PedidoReparacionDetalleID" Mode="In" Type="Int32" />
+      <Parameter Name="Horario" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="PedidoReparacion" EntityType="TropaNerdModel.PedidoReparacion" />
+    <EntitySet Name="PedidoReparacionDetalle" EntityType="TropaNerdModel.PedidoReparacionDetalle" />
+    <EntitySet Name="Cliente" EntityType="TropaNerdModel.Cliente" />
+    <AssociationSet Name="FK_Cliente_Domicilio" Association="TropaNerdModel.FK_Cliente_Domicilio">
+      <End Role="Domicilio" EntitySet="Domicilio" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PedidoReparacion_Cliente" Association="TropaNerdModel.FK_PedidoReparacion_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="PedidoReparacion" EntitySet="PedidoReparacion" />
+    </AssociationSet>
+    <EntitySet Name="TecnicoSet" EntityType="TropaNerdModel.Tecnico" />
+    <AssociationSet Name="FK_Tecnico_Domicilio11" Association="TropaNerdModel.FK_Tecnico_Domicilio11">
+      <End Role="Domicilio" EntitySet="Domicilio" />
+      <End Role="Tecnico1" EntitySet="TecnicoSet" />
+    </AssociationSet>
+    <FunctionImport Name="ClienteINS" ReturnType="Collection(String)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Mail" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="TipoDocumentoID" Mode="In" Type="String" />
+      <Parameter Name="NroDocumento" Mode="In" Type="String" />
+      <Parameter Name="razonSocial" Mode="In" Type="String" />
+      <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+      <Parameter Name="Tipofacturacion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ClientesPerfil" ReturnType="Collection(TropaNerdModel.ClientesPerfil)">
+      <Parameter Name="clienteID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TecnicoINS" ReturnType="Collection(Int32)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Mail" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+      <Parameter Name="NroDocumento" Mode="In" Type="String" />
+      <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+      <Parameter Name="imagen1" Mode="In" Type="String" />
+      <Parameter Name="imagen2" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetPerfilTecnico" ReturnType="Collection(TropaNerdModel.GetPerfilTecnico)">
+      <Parameter Name="tecnicoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TecnicosPerfilUPD">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Mail" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="imagen1" Mode="In" Type="String" />
+      <Parameter Name="imagen2" Mode="In" Type="String" />
+      <Parameter Name="Calle" Mode="In" Type="String" />
+      <Parameter Name="CalleNro" Mode="In" Type="String" />
+      <Parameter Name="CodigoPostal" Mode="In" Type="String" />
+      <Parameter Name="Localidad" Mode="In" Type="String" />
+      <Parameter Name="Provincia" Mode="In" Type="String" />
+      <Parameter Name="Pais" Mode="In" Type="String" />
+      <Parameter Name="TecnicoID" Mode="In" Type="Int32" />
+      <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+      <Parameter Name="TipoDoc" Mode="In" Type="String" />
+      <Parameter Name="nroDoc" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="baja" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PredidoTecnicoINS" ReturnType="Collection(Decimal)">
+      <Parameter Name="PedidoReparacionID" Mode="In" Type="Int32" />
+      <Parameter Name="tecnicoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetPedidosDisponibles" ReturnType="Collection(TropaNerdModel.GetPedidosDisponibles)" />
+    <FunctionImport Name="getTecnicosALL" ReturnType="Collection(TropaNerdModel.getTecnicosALL)" />
+    <FunctionImport Name="TomarPedido">
+      <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetPedidosACerrar" ReturnType="Collection(TropaNerdModel.GetPedidosACerrar)">
+      <Parameter Name="tecnicoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CerrarPedido">
+      <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RetiroINS" ReturnType="Collection(Int32)">
+      <Parameter Name="PedidoReparacionID" Mode="In" Type="Int32" />
+      <Parameter Name="Motivo" Mode="In" Type="String" />
+      <Parameter Name="Detalle" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetRetirosDisponibles" ReturnType="Collection(TropaNerdModel.GetRetirosDisponibles)" />
+    <FunctionImport Name="AsignaRetiroTecnico">
+      <Parameter Name="PedidoRetirado" Mode="In" Type="Int32" />
+      <Parameter Name="tecnicoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="FinalizaRetiroTecnico">
+      <Parameter Name="PedidoRetirado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetClientesAll" ReturnType="Collection(TropaNerdModel.GetClientesAll)" />
+    <FunctionImport Name="GetRetirosaCerrar" ReturnType="Collection(TropaNerdModel.GetRetirosaCerrar)" />
+    <FunctionImport Name="getPedidosAlerta" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetPedidosBYtecnicoID" ReturnType="Collection(TropaNerdModel.GetPedidosBYtecnicoID)">
+      <Parameter Name="TecnicoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetPedidosDescripcion" ReturnType="Collection(TropaNerdModel.GetPedidosDescripcion)">
+      <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetPedidosCerrados" ReturnType="Collection(TropaNerdModel.GetPedidosCerrados)">
+      <Parameter Name="fechaDesde" Mode="In" Type="DateTime" />
+      <Parameter Name="fechahasta" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="getAlertaClientes" ReturnType="Collection(Int32)">
+      <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetClientesEncuesats" ReturnType="Collection(TropaNerdModel.GetClientesEncuesats)">
+      <Parameter Name="tecnicoid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetTecnicosEncuesats" ReturnType="Collection(TropaNerdModel.GetTecnicosEncuesats)">
+      <Parameter Name="ClienteiD" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getAlertaTecnicos" ReturnType="Collection(Int32)">
+      <Parameter Name="TecnicoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UsuariosINS" ReturnType="Collection(String)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="ClienteiID" Mode="In" Type="Int32" />
+      <Parameter Name="TecnicoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getAdministradorPerfil" ReturnType="Collection(TropaNerdModel.getAdministradorPerfil)">
+      <Parameter Name="AdministradorID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateAdministrador">
+      <Parameter Name="AdminID" Mode="In" Type="Int32" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="Baja" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetValidaUsuario">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tipo" Nullable="false" />
+    <Property Type="Int32" Name="TecnicoID" Nullable="false" />
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+    <Property Type="Int32" Name="UsuarioID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="UsuariosID" />
+    </Key>
+    <Property Name="UsuariosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NroUsuario" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+    <Property Name="ClienteID" Type="Int32" />
+    <Property Name="TecnicoID" Type="Int32" />
+    <Property Name="Baja" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Domicilio">
+    <Key>
+      <PropertyRef Name="DomicilioID" />
+    </Key>
+    <Property Name="DomicilioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Calle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CalleNro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoPostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Localidad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Provincia" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Baja" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="TropaNerdModel.FK_Cliente_Domicilio" FromRole="Domicilio" ToRole="Cliente" />
+    <NavigationProperty Name="Tecnico1" Relationship="TropaNerdModel.FK_Tecnico_Domicilio11" FromRole="Domicilio" ToRole="Tecnico1" />
+  </EntityType>
+  <ComplexType Name="getAreasALL">
+    <Property Type="Int32" Name="AreasID" Nullable="false" />
+    <Property Type="String" Name="AreasDescrip" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="Baja" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetArticulosByArea">
+    <Property Type="Int32" Name="ArticulosID" Nullable="false" />
+    <Property Type="Int32" Name="AreasID" Nullable="true" />
+    <Property Type="String" Name="ArticulosDescrip" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Baja" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Areas">
+    <Key>
+      <PropertyRef Name="AreasID" />
+    </Key>
+    <Property Name="AreasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AreasDescrip" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Baja" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Encuestas">
+    <Key>
+      <PropertyRef Name="EncuestasID" />
+    </Key>
+    <Property Name="EncuestasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TecnicoID" Type="Int32" />
+    <Property Name="ClienteID" Type="Int32" />
+    <Property Name="Calificacin" Type="Int32" />
+    <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="PedidoReparacionID" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="GetClientesAll">
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+    <Property Type="Int32" Name="NroCliente" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TipoDocumento" Nullable="true" />
+    <Property Type="String" Name="NroDocumento" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="DomicilioID" Nullable="true" />
+    <Property Type="DateTime" Name="FechaAlta" Nullable="true" Precision="23" />
+    <Property Type="String" Name="TipoFactura" Nullable="true" MaxLength="1" />
+    <Property Type="Int32" Name="Baja" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="PedidoReparacion">
+    <Key>
+      <PropertyRef Name="PedidoReparacionID" />
+    </Key>
+    <Property Name="PedidoReparacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PedidoReparacionDetalleID" Type="Int32" />
+    <Property Name="NroPedidoReparacion" Type="Int32" />
+    <Property Name="DomiclioID" Type="Int32" Nullable="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+    <Property Name="FechaCierre" Type="DateTime" Precision="3" />
+    <Property Name="DescripcionProblema" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="HorarioDisponible" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FechaPasaTecnico" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Cliente" Relationship="TropaNerdModel.FK_PedidoReparacion_Cliente" FromRole="PedidoReparacion" ToRole="Cliente" />
+    <Property Name="FechaTomaTecnico" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PedidoReparacionDetalle">
+    <Key>
+      <PropertyRef Name="PedidoReparacionDetalleID" />
+    </Key>
+    <Property Name="PedidoReparacionDetalleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticuloID" Type="Int32" Nullable="false" />
+    <Property Name="Latitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Longitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AreasID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteID" />
+    </Key>
+    <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NroCliente" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RazonSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+    <Property Name="TipoFactura" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Baja" Type="Int32" />
+    <NavigationProperty Name="Domicilio" Relationship="TropaNerdModel.FK_Cliente_Domicilio" FromRole="Cliente" ToRole="Domicilio" />
+    <NavigationProperty Name="PedidoReparacion" Relationship="TropaNerdModel.FK_PedidoReparacion_Cliente" FromRole="Cliente" ToRole="PedidoReparacion" />
+  </EntityType>
+  <Association Name="FK_Cliente_Domicilio">
+    <End Type="TropaNerdModel.Domicilio" Role="Domicilio" Multiplicity="0..1" />
+    <End Type="TropaNerdModel.Cliente" Role="Cliente" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_PedidoReparacion_Cliente">
+    <End Type="TropaNerdModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="TropaNerdModel.PedidoReparacion" Role="PedidoReparacion" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Tecnico">
+    <Key>
+      <PropertyRef Name="TecnicoID" />
+    </Key>
+    <Property Name="TecnicoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NroTecnico" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Imagen1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Imagen2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Baja" Type="Int32" />
+    <NavigationProperty Name="Domicilio" Relationship="TropaNerdModel.FK_Tecnico_Domicilio11" FromRole="Tecnico1" ToRole="Domicilio" />
+  </EntityType>
+  <Association Name="FK_Tecnico_Domicilio11">
+    <End Type="TropaNerdModel.Domicilio" Role="Domicilio" Multiplicity="0..1" />
+    <End Type="TropaNerdModel.Tecnico" Role="Tecnico1" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="ClientesPerfil">
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+    <Property Type="Int32" Name="NroCliente" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NroDocumento" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="DomicilioID" Nullable="true" />
+    <Property Type="DateTime" Name="FechaAlta" Nullable="true" Precision="23" />
+    <Property Type="String" Name="TipoFactura" Nullable="true" MaxLength="1" />
+    <Property Type="Int32" Name="BajaCLI" Nullable="true" />
+    <Property Type="String" Name="Calle" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CalleNro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CodigoPostal" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Localidad" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Provincia" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Pais" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Baja" Nullable="true" />
+    <Property Type="String" Name="Pass" Nullable="false" />
+    <Property Type="String" Name="NomUsu" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetPerfilTecnico">
+    <Property Type="Int32" Name="TecnicoID" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NroDocumento" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DomicilioID" Nullable="true" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Imagen1" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Imagen2" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Calle" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CalleNro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CodigoPostal" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Localidad" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Provincia" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Pais" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NomUsu" Nullable="false" />
+    <Property Type="String" Name="Pass" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetPedidosDisponibles">
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="202" />
+    <Property Type="String" Name="Domicilio" Nullable="true" MaxLength="452" />
+    <Property Type="Int32" Name="NroPedidoReparacion" Nullable="true" />
+    <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="getTecnicosALL">
+    <Property Type="Int32" Name="TecnicoID" Nullable="false" />
+    <Property Type="Int32" Name="NroTecnico" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="DomicilioID" Nullable="true" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NroDocumento" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaAlta" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Imagen1" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Imagen2" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Baja" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetPedidosACerrar">
+    <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+    <Property Type="Int32" Name="TecnicoID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetRetirosDisponibles">
+    <Property Type="Int32" Name="PedidoRetiradoID" Nullable="false" />
+    <Property Type="Int32" Name="NroPedidoRetirado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetRetirosaCerrar">
+    <Property Type="Int32" Name="PedidoRetiradoID" Nullable="false" />
+    <Property Type="Int32" Name="NroPedidoRetirado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetPedidosBYtecnicoID">
+    <Property Type="Int32" Name="NroPedidoReparacion" Nullable="true" />
+    <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="202" />
+    <Property Type="String" Name="Articulo" Nullable="true" MaxLength="202" />
+    <Property Type="String" Name="Domicilio" Nullable="true" MaxLength="463" />
+    <Property Type="String" Name="Problema" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Horario" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="GetPedidosDescripcion">
+    <Property Type="Int32" Name="NroPedidoReparacion" Nullable="true" />
+    <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="202" />
+    <Property Type="String" Name="Articulo" Nullable="true" MaxLength="202" />
+    <Property Type="String" Name="Domicilio" Nullable="true" MaxLength="463" />
+    <Property Type="String" Name="Problema" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Horario" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetPedidosCerrados">
+    <Property Type="Int32" Name="NroPedidoReparacion" Nullable="true" />
+    <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaPasaTecnico" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaTomaTecnico" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaCierre" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="201" />
+    <Property Type="String" Name="tecnico" Nullable="true" MaxLength="201" />
+  </ComplexType>
+  <ComplexType Name="GetClientesEncuesats">
+    <Property Type="String" Name="Detalle" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+    <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetTecnicosEncuesats">
+    <Property Type="String" Name="Detalle" Nullable="true" MaxLength="228" />
+    <Property Type="String" Name="Tecnico" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="TecnicoID" Nullable="false" />
+    <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="getAdministradorPerfil">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Pass" Nullable="true" MaxLength="100" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,1184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TropaNerdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="AreasID" />
+          </Key>
+          <Property Name="AreasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreasDescrip" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Baja" Type="int" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NroCliente" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono" Type="varchar" MaxLength="100" />
+          <Property Name="TipoDocumento" Type="varchar" MaxLength="20" />
+          <Property Name="NroDocumento" Type="varchar" MaxLength="50" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="100" />
+          <Property Name="DomicilioID" Type="int" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="TipoFactura" Type="varchar" MaxLength="1" />
+          <Property Name="Baja" Type="int" />
+        </EntityType>
+        <EntityType Name="Domicilio">
+          <Key>
+            <PropertyRef Name="DomicilioID" />
+          </Key>
+          <Property Name="DomicilioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calle" Type="varchar" MaxLength="200" />
+          <Property Name="CalleNro" Type="varchar" MaxLength="100" />
+          <Property Name="CodigoPostal" Type="varchar" MaxLength="10" />
+          <Property Name="Localidad" Type="varchar" MaxLength="150" />
+          <Property Name="Provincia" Type="varchar" MaxLength="150" />
+          <Property Name="Pais" Type="varchar" MaxLength="50" />
+          <Property Name="Baja" Type="int" />
+        </EntityType>
+        <EntityType Name="Encuestas">
+          <Key>
+            <PropertyRef Name="EncuestasID" />
+          </Key>
+          <Property Name="EncuestasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TecnicoID" Type="int" />
+          <Property Name="ClienteID" Type="int" />
+          <Property Name="Calificacin" Type="int" />
+          <Property Name="Observacion" Type="varchar" MaxLength="200" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="PedidoReparacionID" Type="int" />
+        </EntityType>
+        <EntityType Name="PedidoReparacion">
+          <Key>
+            <PropertyRef Name="PedidoReparacionID" />
+          </Key>
+          <Property Name="PedidoReparacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PedidoReparacionDetalleID" Type="int" />
+          <Property Name="NroPedidoReparacion" Type="int" />
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="DomiclioID" Type="int" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="FechaPasaTecnico" Type="datetime" />
+          <Property Name="FechaTomaTecnico" Type="datetime" />
+          <Property Name="FechaCierre" Type="datetime" />
+          <Property Name="DescripcionProblema" Type="varchar" MaxLength="200" />
+          <Property Name="HorarioDisponible" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="PedidoReparacionDetalle">
+          <Key>
+            <PropertyRef Name="PedidoReparacionDetalleID" />
+          </Key>
+          <Property Name="PedidoReparacionDetalleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticuloID" Type="int" Nullable="false" />
+          <Property Name="Latitud" Type="varchar" MaxLength="100" />
+          <Property Name="Longitud" Type="varchar" MaxLength="100" />
+          <Property Name="AreasID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tecnico">
+          <Key>
+            <PropertyRef Name="TecnicoID" />
+          </Key>
+          <Property Name="TecnicoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NroTecnico" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" />
+          <Property Name="DomicilioID" Type="int" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="TipoDocumento" Type="varchar" MaxLength="20" />
+          <Property Name="NroDocumento" Type="varchar" MaxLength="50" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" />
+          <Property Name="Imagen1" Type="varchar" MaxLength="100" />
+          <Property Name="Imagen2" Type="varchar" MaxLength="100" />
+          <Property Name="Baja" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuariosID" />
+          </Key>
+          <Property Name="UsuariosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NroUsuario" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" />
+          <Property Name="Pass" Type="varchar" MaxLength="100" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="ClienteID" Type="int" />
+          <Property Name="TecnicoID" Type="int" />
+          <Property Name="Baja" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cliente_Domicilio">
+          <End Role="Domicilio" Type="Self.Domicilio" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domicilio">
+              <PropertyRef Name="DomicilioID" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="DomicilioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoReparacion_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="PedidoReparacion" Type="Self.PedidoReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="PedidoReparacion">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tecnico_Domicilio1">
+          <End Role="Domicilio" Type="Self.Domicilio" Multiplicity="0..1" />
+          <End Role="Tecnico" Type="Self.Tecnico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domicilio">
+              <PropertyRef Name="DomicilioID" />
+            </Principal>
+            <Dependent Role="Tecnico">
+              <PropertyRef Name="DomicilioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="getAdministradorPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+          <Parameter Name="AdministradorID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getAlertaClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+          <Parameter Name="ClienteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getAlertaTecnicos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+          <Parameter Name="TecnicoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetClientesEncuesats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+          <Parameter Name="tecnicoid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetTecnicosEncuesats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+          <Parameter Name="ClienteiD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateAdministrador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+          <Parameter Name="AdminID" Type="int" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+          <Parameter Name="Baja" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AsignaRetiroTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoRetirado" Type="int" Mode="In" />
+          <Parameter Name="tecnicoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CerrarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ClienteINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Mail" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="TipoDocumentoID" Type="varchar" Mode="In" />
+          <Parameter Name="NroDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="razonSocial" Type="varchar" Mode="In" />
+          <Parameter Name="DomicilioID" Type="int" Mode="In" />
+          <Parameter Name="Tipofacturacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ClientesPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clienteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ClientesPerfilUPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Mail" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="RazonSocial" Type="varchar" Mode="In" />
+          <Parameter Name="TipoFactura" Type="varchar" Mode="In" />
+          <Parameter Name="Calle" Type="varchar" Mode="In" />
+          <Parameter Name="CalleNro" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoPostal" Type="varchar" Mode="In" />
+          <Parameter Name="Localidad" Type="varchar" Mode="In" />
+          <Parameter Name="Provincia" Type="varchar" Mode="In" />
+          <Parameter Name="Pais" Type="varchar" Mode="In" />
+          <Parameter Name="ClienteID" Type="int" Mode="In" />
+          <Parameter Name="DomicilioID" Type="int" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="FinalizaRetiroTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoRetirado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getAreasALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetArticulosByArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AreaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetClientesAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetPedidosACerrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tecnicoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getPedidosAlerta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetPedidosBYtecnicoID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TecnicoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPedidosCerrados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaDesde" Type="datetime" Mode="In" />
+          <Parameter Name="fechahasta" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetPedidosDescripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPedidosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetPerfilTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tecnicoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetRetirosaCerrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetRetirosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getTecnicosALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PedidoReparacionDetalleINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticuloID" Type="int" Mode="In" />
+          <Parameter Name="Latitud" Type="varchar" Mode="In" />
+          <Parameter Name="Longitud" Type="varchar" Mode="In" />
+          <Parameter Name="AreasID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PedidoReparacionINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClienteID" Type="int" Mode="In" />
+          <Parameter Name="DomicilioID" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="PedidoReparacionDetalleID" Type="int" Mode="In" />
+          <Parameter Name="Horario" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PredidoTecnicoINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoReparacionID" Type="int" Mode="In" />
+          <Parameter Name="tecnicoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetiroINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoReparacionID" Type="int" Mode="In" />
+          <Parameter Name="Motivo" Type="varchar" Mode="In" />
+          <Parameter Name="Detalle" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="TecnicoINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Mail" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="NroDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="DomicilioID" Type="int" Mode="In" />
+          <Parameter Name="imagen1" Type="varchar" Mode="In" />
+          <Parameter Name="imagen2" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="TecnicosPerfilUPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Mail" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="imagen1" Type="varchar" Mode="In" />
+          <Parameter Name="imagen2" Type="varchar" Mode="In" />
+          <Parameter Name="Calle" Type="varchar" Mode="In" />
+          <Parameter Name="CalleNro" Type="varchar" Mode="In" />
+          <Parameter Name="CodigoPostal" Type="varchar" Mode="In" />
+          <Parameter Name="Localidad" Type="varchar" Mode="In" />
+          <Parameter Name="Provincia" Type="varchar" Mode="In" />
+          <Parameter Name="Pais" Type="varchar" Mode="In" />
+          <Parameter Name="TecnicoID" Type="int" Mode="In" />
+          <Parameter Name="DomicilioID" Type="int" Mode="In" />
+          <Parameter Name="TipoDoc" Type="varchar" Mode="In" />
+          <Parameter Name="nroDoc" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+          <Parameter Name="baja" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TomarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UsuariosINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="ClienteiID" Type="int" Mode="In" />
+          <Parameter Name="TecnicoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ValidaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Pass" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="TropaNerdModelStoreContainer">
+          <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Domicilio" EntityType="Self.Domicilio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Encuestas" EntityType="Self.Encuestas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoReparacion" EntityType="Self.PedidoReparacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoReparacionDetalle" EntityType="Self.PedidoReparacionDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tecnico" EntityType="Self.Tecnico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cliente_Domicilio" Association="Self.FK_Cliente_Domicilio">
+            <End Role="Domicilio" EntitySet="Domicilio" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoReparacion_Cliente" Association="Self.FK_PedidoReparacion_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="PedidoReparacion" EntitySet="PedidoReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tecnico_Domicilio1" Association="Self.FK_Tecnico_Domicilio1">
+            <End Role="Domicilio" EntitySet="Domicilio" />
+            <End Role="Tecnico" EntitySet="Tecnico" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TropaNerdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TropaNerdEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="ValidaUsuario" ReturnType="Collection(TropaNerdModel.GetValidaUsuario)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Usuarios" EntityType="TropaNerdModel.Usuarios" />
+          <EntitySet Name="Domicilio" EntityType="TropaNerdModel.Domicilio" />
+          <FunctionImport Name="getAreasALL" ReturnType="Collection(TropaNerdModel.getAreasALL)" />
+          <FunctionImport Name="GetArticulosByArea" ReturnType="Collection(TropaNerdModel.GetArticulosByArea)">
+          <Parameter Name="AreaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Areas" EntityType="TropaNerdModel.Areas" />
+          <EntitySet Name="Encuestas" EntityType="TropaNerdModel.Encuestas" />
+          <FunctionImport Name="ClientesPerfilUPD">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Mail" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="RazonSocial" Mode="In" Type="String" />
+            <Parameter Name="TipoFactura" Mode="In" Type="String" />
+            <Parameter Name="Calle" Mode="In" Type="String" />
+            <Parameter Name="CalleNro" Mode="In" Type="String" />
+            <Parameter Name="CodigoPostal" Mode="In" Type="String" />
+            <Parameter Name="Localidad" Mode="In" Type="String" />
+            <Parameter Name="Provincia" Mode="In" Type="String" />
+            <Parameter Name="Pais" Mode="In" Type="String" />
+            <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+            <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PedidoReparacionDetalleINS" ReturnType="Collection(Int32)">
+            <Parameter Name="ArticuloID" Mode="In" Type="Int32" />
+            <Parameter Name="Latitud" Mode="In" Type="String" />
+            <Parameter Name="Longitud" Mode="In" Type="String" />
+            <Parameter Name="AreasID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PedidoReparacionINS">
+            <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+            <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="PedidoReparacionDetalleID" Mode="In" Type="Int32" />
+            <Parameter Name="Horario" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="PedidoReparacion" EntityType="TropaNerdModel.PedidoReparacion" />
+          <EntitySet Name="PedidoReparacionDetalle" EntityType="TropaNerdModel.PedidoReparacionDetalle" />
+          <EntitySet Name="Cliente" EntityType="TropaNerdModel.Cliente" />
+          <AssociationSet Name="FK_Cliente_Domicilio" Association="TropaNerdModel.FK_Cliente_Domicilio">
+            <End Role="Domicilio" EntitySet="Domicilio" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoReparacion_Cliente" Association="TropaNerdModel.FK_PedidoReparacion_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="PedidoReparacion" EntitySet="PedidoReparacion" />
+          </AssociationSet>
+          <EntitySet Name="TecnicoSet" EntityType="TropaNerdModel.Tecnico" />
+          <AssociationSet Name="FK_Tecnico_Domicilio11" Association="TropaNerdModel.FK_Tecnico_Domicilio11">
+            <End Role="Domicilio" EntitySet="Domicilio" />
+            <End Role="Tecnico1" EntitySet="TecnicoSet" />
+          </AssociationSet>
+          <FunctionImport Name="ClienteINS" ReturnType="Collection(String)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Mail" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="TipoDocumentoID" Mode="In" Type="String" />
+            <Parameter Name="NroDocumento" Mode="In" Type="String" />
+            <Parameter Name="razonSocial" Mode="In" Type="String" />
+            <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+            <Parameter Name="Tipofacturacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ClientesPerfil" ReturnType="Collection(TropaNerdModel.ClientesPerfil)">
+          <Parameter Name="clienteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TecnicoINS" ReturnType="Collection(Int32)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Mail" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+            <Parameter Name="NroDocumento" Mode="In" Type="String" />
+            <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+            <Parameter Name="imagen1" Mode="In" Type="String" />
+            <Parameter Name="imagen2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPerfilTecnico" ReturnType="Collection(TropaNerdModel.GetPerfilTecnico)">
+          <Parameter Name="tecnicoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TecnicosPerfilUPD">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Mail" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="imagen1" Mode="In" Type="String" />
+            <Parameter Name="imagen2" Mode="In" Type="String" />
+            <Parameter Name="Calle" Mode="In" Type="String" />
+            <Parameter Name="CalleNro" Mode="In" Type="String" />
+            <Parameter Name="CodigoPostal" Mode="In" Type="String" />
+            <Parameter Name="Localidad" Mode="In" Type="String" />
+            <Parameter Name="Provincia" Mode="In" Type="String" />
+            <Parameter Name="Pais" Mode="In" Type="String" />
+            <Parameter Name="TecnicoID" Mode="In" Type="Int32" />
+            <Parameter Name="DomicilioID" Mode="In" Type="Int32" />
+            <Parameter Name="TipoDoc" Mode="In" Type="String" />
+            <Parameter Name="nroDoc" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="baja" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PredidoTecnicoINS" ReturnType="Collection(Decimal)">
+            <Parameter Name="PedidoReparacionID" Mode="In" Type="Int32" />
+            <Parameter Name="tecnicoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPedidosDisponibles" ReturnType="Collection(TropaNerdModel.GetPedidosDisponibles)" />
+          <FunctionImport Name="getTecnicosALL" ReturnType="Collection(TropaNerdModel.getTecnicosALL)" />
+          <FunctionImport Name="TomarPedido">
+          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPedidosACerrar" ReturnType="Collection(TropaNerdModel.GetPedidosACerrar)">
+          <Parameter Name="tecnicoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CerrarPedido">
+          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetiroINS" ReturnType="Collection(Int32)">
+            <Parameter Name="PedidoReparacionID" Mode="In" Type="Int32" />
+            <Parameter Name="Motivo" Mode="In" Type="String" />
+            <Parameter Name="Detalle" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetRetirosDisponibles" ReturnType="Collection(TropaNerdModel.GetRetirosDisponibles)" />
+          <FunctionImport Name="AsignaRetiroTecnico">
+            <Parameter Name="PedidoRetirado" Mode="In" Type="Int32" />
+            <Parameter Name="tecnicoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FinalizaRetiroTecnico">
+          <Parameter Name="PedidoRetirado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetClientesAll" ReturnType="Collection(TropaNerdModel.GetClientesAll)" />
+          <FunctionImport Name="GetRetirosaCerrar" ReturnType="Collection(TropaNerdModel.GetRetirosaCerrar)" />
+          <FunctionImport Name="getPedidosAlerta" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetPedidosBYtecnicoID" ReturnType="Collection(TropaNerdModel.GetPedidosBYtecnicoID)">
+          <Parameter Name="TecnicoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPedidosDescripcion" ReturnType="Collection(TropaNerdModel.GetPedidosDescripcion)">
+          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPedidosCerrados" ReturnType="Collection(TropaNerdModel.GetPedidosCerrados)">
+            <Parameter Name="fechaDesde" Mode="In" Type="DateTime" />
+            <Parameter Name="fechahasta" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="getAlertaClientes" ReturnType="Collection(Int32)">
+          <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetClientesEncuesats" ReturnType="Collection(TropaNerdModel.GetClientesEncuesats)">
+          <Parameter Name="tecnicoid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetTecnicosEncuesats" ReturnType="Collection(TropaNerdModel.GetTecnicosEncuesats)">
+          <Parameter Name="ClienteiD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getAlertaTecnicos" ReturnType="Collection(Int32)">
+          <Parameter Name="TecnicoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UsuariosINS" ReturnType="Collection(String)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="ClienteiID" Mode="In" Type="Int32" />
+            <Parameter Name="TecnicoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getAdministradorPerfil" ReturnType="Collection(TropaNerdModel.getAdministradorPerfil)">
+          <Parameter Name="AdministradorID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAdministrador">
+            <Parameter Name="AdminID" Mode="In" Type="Int32" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="Baja" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="GetValidaUsuario">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Tipo" Nullable="false" />
+          <Property Type="Int32" Name="TecnicoID" Nullable="false" />
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="Int32" Name="UsuarioID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuariosID" />
+          </Key>
+          <Property Name="UsuariosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NroUsuario" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="ClienteID" Type="Int32" />
+          <Property Name="TecnicoID" Type="Int32" />
+          <Property Name="Baja" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Domicilio">
+          <Key>
+            <PropertyRef Name="DomicilioID" />
+          </Key>
+          <Property Name="DomicilioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Calle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CalleNro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoPostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Localidad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Baja" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="TropaNerdModel.FK_Cliente_Domicilio" FromRole="Domicilio" ToRole="Cliente" />
+          <NavigationProperty Name="Tecnico1" Relationship="TropaNerdModel.FK_Tecnico_Domicilio11" FromRole="Domicilio" ToRole="Tecnico1" />
+        </EntityType>
+        <ComplexType Name="getAreasALL">
+          <Property Type="Int32" Name="AreasID" Nullable="false" />
+          <Property Type="String" Name="AreasDescrip" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Baja" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetArticulosByArea">
+          <Property Type="Int32" Name="ArticulosID" Nullable="false" />
+          <Property Type="Int32" Name="AreasID" Nullable="true" />
+          <Property Type="String" Name="ArticulosDescrip" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Baja" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="AreasID" />
+          </Key>
+          <Property Name="AreasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreasDescrip" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Baja" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Encuestas">
+          <Key>
+            <PropertyRef Name="EncuestasID" />
+          </Key>
+          <Property Name="EncuestasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TecnicoID" Type="Int32" />
+          <Property Name="ClienteID" Type="Int32" />
+          <Property Name="Calificacin" Type="Int32" />
+          <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="PedidoReparacionID" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="GetClientesAll">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="Int32" Name="NroCliente" Nullable="true" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TipoDocumento" Nullable="true" />
+          <Property Type="String" Name="NroDocumento" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DomicilioID" Nullable="true" />
+          <Property Type="DateTime" Name="FechaAlta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TipoFactura" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Baja" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="PedidoReparacion">
+          <Key>
+            <PropertyRef Name="PedidoReparacionID" />
+          </Key>
+          <Property Name="PedidoReparacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PedidoReparacionDetalleID" Type="Int32" />
+          <Property Name="NroPedidoReparacion" Type="Int32" />
+          <Property Name="DomiclioID" Type="Int32" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="FechaCierre" Type="DateTime" Precision="3" />
+          <Property Name="DescripcionProblema" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="HorarioDisponible" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FechaPasaTecnico" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cliente" Relationship="TropaNerdModel.FK_PedidoReparacion_Cliente" FromRole="PedidoReparacion" ToRole="Cliente" />
+          <Property Name="FechaTomaTecnico" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PedidoReparacionDetalle">
+          <Key>
+            <PropertyRef Name="PedidoReparacionDetalleID" />
+          </Key>
+          <Property Name="PedidoReparacionDetalleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticuloID" Type="Int32" Nullable="false" />
+          <Property Name="Latitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Longitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AreasID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NroCliente" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="TipoFactura" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Baja" Type="Int32" />
+          <NavigationProperty Name="Domicilio" Relationship="TropaNerdModel.FK_Cliente_Domicilio" FromRole="Cliente" ToRole="Domicilio" />
+          <NavigationProperty Name="PedidoReparacion" Relationship="TropaNerdModel.FK_PedidoReparacion_Cliente" FromRole="Cliente" ToRole="PedidoReparacion" />
+        </EntityType>
+        <Association Name="FK_Cliente_Domicilio">
+          <End Type="TropaNerdModel.Domicilio" Role="Domicilio" Multiplicity="0..1" />
+          <End Type="TropaNerdModel.Cliente" Role="Cliente" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_PedidoReparacion_Cliente">
+          <End Type="TropaNerdModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="TropaNerdModel.PedidoReparacion" Role="PedidoReparacion" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Tecnico">
+          <Key>
+            <PropertyRef Name="TecnicoID" />
+          </Key>
+          <Property Name="TecnicoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NroTecnico" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Baja" Type="Int32" />
+          <NavigationProperty Name="Domicilio" Relationship="TropaNerdModel.FK_Tecnico_Domicilio11" FromRole="Tecnico1" ToRole="Domicilio" />
+        </EntityType>
+        <Association Name="FK_Tecnico_Domicilio11">
+          <End Type="TropaNerdModel.Domicilio" Role="Domicilio" Multiplicity="0..1" />
+          <End Type="TropaNerdModel.Tecnico" Role="Tecnico1" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="ClientesPerfil">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="Int32" Name="NroCliente" Nullable="true" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NroDocumento" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DomicilioID" Nullable="true" />
+          <Property Type="DateTime" Name="FechaAlta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TipoFactura" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="BajaCLI" Nullable="true" />
+          <Property Type="String" Name="Calle" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CalleNro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CodigoPostal" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Localidad" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Pais" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Baja" Nullable="true" />
+          <Property Type="String" Name="Pass" Nullable="false" />
+          <Property Type="String" Name="NomUsu" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetPerfilTecnico">
+          <Property Type="Int32" Name="TecnicoID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NroDocumento" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="DomicilioID" Nullable="true" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Imagen1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Imagen2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calle" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CalleNro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CodigoPostal" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Localidad" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Pais" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NomUsu" Nullable="false" />
+          <Property Type="String" Name="Pass" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetPedidosDisponibles">
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="202" />
+          <Property Type="String" Name="Domicilio" Nullable="true" MaxLength="452" />
+          <Property Type="Int32" Name="NroPedidoReparacion" Nullable="true" />
+          <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getTecnicosALL">
+          <Property Type="Int32" Name="TecnicoID" Nullable="false" />
+          <Property Type="Int32" Name="NroTecnico" Nullable="true" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DomicilioID" Nullable="true" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TipoDocumento" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NroDocumento" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaAlta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Imagen1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Imagen2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Baja" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetPedidosACerrar">
+          <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+          <Property Type="Int32" Name="TecnicoID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetRetirosDisponibles">
+          <Property Type="Int32" Name="PedidoRetiradoID" Nullable="false" />
+          <Property Type="Int32" Name="NroPedidoRetirado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetRetirosaCerrar">
+          <Property Type="Int32" Name="PedidoRetiradoID" Nullable="false" />
+          <Property Type="Int32" Name="NroPedidoRetirado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetPedidosBYtecnicoID">
+          <Property Type="Int32" Name="NroPedidoReparacion" Nullable="true" />
+          <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="202" />
+          <Property Type="String" Name="Articulo" Nullable="true" MaxLength="202" />
+          <Property Type="String" Name="Domicilio" Nullable="true" MaxLength="463" />
+          <Property Type="String" Name="Problema" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Horario" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="GetPedidosDescripcion">
+          <Property Type="Int32" Name="NroPedidoReparacion" Nullable="true" />
+          <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="202" />
+          <Property Type="String" Name="Articulo" Nullable="true" MaxLength="202" />
+          <Property Type="String" Name="Domicilio" Nullable="true" MaxLength="463" />
+          <Property Type="String" Name="Problema" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Horario" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetPedidosCerrados">
+          <Property Type="Int32" Name="NroPedidoReparacion" Nullable="true" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaPasaTecnico" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaTomaTecnico" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaCierre" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="201" />
+          <Property Type="String" Name="tecnico" Nullable="true" MaxLength="201" />
+        </ComplexType>
+        <ComplexType Name="GetClientesEncuesats">
+          <Property Type="String" Name="Detalle" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetTecnicosEncuesats">
+          <Property Type="String" Name="Detalle" Nullable="true" MaxLength="228" />
+          <Property Type="String" Name="Tecnico" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TecnicoID" Nullable="false" />
+          <Property Type="Int32" Name="PedidoReparacionID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getAdministradorPerfil">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Pass" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TropaNerdModelStoreContainer" CdmEntityContainer="TropaNerdEntities">
+          <FunctionImportMapping FunctionImportName="ValidaUsuario" FunctionName="TropaNerdModel.Store.ValidaUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetValidaUsuario">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="TropaNerdModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NroUsuario" ColumnName="NroUsuario" />
+                <ScalarProperty Name="UsuariosID" ColumnName="UsuariosID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Domicilio">
+            <EntityTypeMapping TypeName="TropaNerdModel.Domicilio">
+              <MappingFragment StoreEntitySet="Domicilio">
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="CalleNro" ColumnName="CalleNro" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getAreasALL" FunctionName="TropaNerdModel.Store.getAreasALL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.getAreasALL">
+                <ScalarProperty Name="AreasID" ColumnName="AreasID" />
+                <ScalarProperty Name="AreasDescrip" ColumnName="AreasDescrip" />
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetArticulosByArea" FunctionName="TropaNerdModel.Store.GetArticulosByArea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetArticulosByArea">
+                <ScalarProperty Name="ArticulosID" ColumnName="ArticulosID" />
+                <ScalarProperty Name="AreasID" ColumnName="AreasID" />
+                <ScalarProperty Name="ArticulosDescrip" ColumnName="ArticulosDescrip" />
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="TropaNerdModel.Areas">
+              <MappingFragment StoreEntitySet="Areas">
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+                <ScalarProperty Name="AreasDescrip" ColumnName="AreasDescrip" />
+                <ScalarProperty Name="AreasID" ColumnName="AreasID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Encuestas">
+            <EntityTypeMapping TypeName="TropaNerdModel.Encuestas">
+              <MappingFragment StoreEntitySet="Encuestas">
+                <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Calificacin" ColumnName="Calificacin" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+                <ScalarProperty Name="EncuestasID" ColumnName="EncuestasID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ClientesPerfilUPD" FunctionName="TropaNerdModel.Store.ClientesPerfilUPD" />
+          <FunctionImportMapping FunctionImportName="PedidoReparacionDetalleINS" FunctionName="TropaNerdModel.Store.PedidoReparacionDetalleINS" />
+          <FunctionImportMapping FunctionImportName="PedidoReparacionINS" FunctionName="TropaNerdModel.Store.PedidoReparacionINS" />
+          <EntitySetMapping Name="PedidoReparacion">
+            <EntityTypeMapping TypeName="TropaNerdModel.PedidoReparacion">
+              <MappingFragment StoreEntitySet="PedidoReparacion">
+                <ScalarProperty Name="FechaTomaTecnico" ColumnName="FechaTomaTecnico" />
+                <ScalarProperty Name="FechaPasaTecnico" ColumnName="FechaPasaTecnico" />
+                <ScalarProperty Name="HorarioDisponible" ColumnName="HorarioDisponible" />
+                <ScalarProperty Name="DescripcionProblema" ColumnName="DescripcionProblema" />
+                <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="DomiclioID" ColumnName="DomiclioID" />
+                <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+                <ScalarProperty Name="PedidoReparacionDetalleID" ColumnName="PedidoReparacionDetalleID" />
+                <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoReparacionDetalle">
+            <EntityTypeMapping TypeName="TropaNerdModel.PedidoReparacionDetalle">
+              <MappingFragment StoreEntitySet="PedidoReparacionDetalle">
+                <ScalarProperty Name="AreasID" ColumnName="AreasID" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="ArticuloID" ColumnName="ArticuloID" />
+                <ScalarProperty Name="PedidoReparacionDetalleID" ColumnName="PedidoReparacionDetalleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="TropaNerdModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+                <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NroCliente" ColumnName="NroCliente" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Cliente_Domicilio" TypeName="TropaNerdModel.FK_Cliente_Domicilio" StoreEntitySet="Cliente">
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+            </EndProperty>
+            <EndProperty Name="Domicilio">
+              <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+            </EndProperty>
+            <Condition ColumnName="DomicilioID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PedidoReparacion_Cliente" TypeName="TropaNerdModel.FK_PedidoReparacion_Cliente" StoreEntitySet="PedidoReparacion">
+            <EndProperty Name="PedidoReparacion">
+              <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+            </EndProperty>
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="TecnicoSet">
+            <EntityTypeMapping TypeName="TropaNerdModel.Tecnico">
+              <MappingFragment StoreEntitySet="Tecnico">
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+                <ScalarProperty Name="Imagen2" ColumnName="Imagen2" />
+                <ScalarProperty Name="Imagen1" ColumnName="Imagen1" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NroTecnico" ColumnName="NroTecnico" />
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Tecnico_Domicilio11" TypeName="TropaNerdModel.FK_Tecnico_Domicilio11" StoreEntitySet="Tecnico">
+            <EndProperty Name="Tecnico1">
+              <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+            </EndProperty>
+            <EndProperty Name="Domicilio">
+              <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+            </EndProperty>
+            <Condition ColumnName="DomicilioID" IsNull="false" />
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="ClienteINS" FunctionName="TropaNerdModel.Store.ClienteINS" />
+          <FunctionImportMapping FunctionImportName="ClientesPerfil" FunctionName="TropaNerdModel.Store.ClientesPerfil">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.ClientesPerfil">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="NroCliente" ColumnName="NroCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+                <ScalarProperty Name="BajaCLI" ColumnName="BajaCLI" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="CalleNro" ColumnName="CalleNro" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TecnicoINS" FunctionName="TropaNerdModel.Store.TecnicoINS" />
+          <FunctionImportMapping FunctionImportName="GetPerfilTecnico" FunctionName="TropaNerdModel.Store.GetPerfilTecnico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetPerfilTecnico">
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Imagen1" ColumnName="Imagen1" />
+                <ScalarProperty Name="Imagen2" ColumnName="Imagen2" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="CalleNro" ColumnName="CalleNro" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TecnicosPerfilUPD" FunctionName="TropaNerdModel.Store.TecnicosPerfilUPD" />
+          <FunctionImportMapping FunctionImportName="PredidoTecnicoINS" FunctionName="TropaNerdModel.Store.PredidoTecnicoINS" />
+          <FunctionImportMapping FunctionImportName="GetPedidosDisponibles" FunctionName="TropaNerdModel.Store.GetPedidosDisponibles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosDisponibles">
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+                <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getTecnicosALL" FunctionName="TropaNerdModel.Store.getTecnicosALL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.getTecnicosALL">
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+                <ScalarProperty Name="NroTecnico" ColumnName="NroTecnico" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Imagen1" ColumnName="Imagen1" />
+                <ScalarProperty Name="Imagen2" ColumnName="Imagen2" />
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TomarPedido" FunctionName="TropaNerdModel.Store.TomarPedido" />
+          <FunctionImportMapping FunctionImportName="GetPedidosACerrar" FunctionName="TropaNerdModel.Store.GetPedidosACerrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosACerrar">
+                <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CerrarPedido" FunctionName="TropaNerdModel.Store.CerrarPedido" />
+          <FunctionImportMapping FunctionImportName="RetiroINS" FunctionName="TropaNerdModel.Store.RetiroINS" />
+          <FunctionImportMapping FunctionImportName="GetRetirosDisponibles" FunctionName="TropaNerdModel.Store.GetRetirosDisponibles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetRetirosDisponibles">
+                <ScalarProperty Name="PedidoRetiradoID" ColumnName="PedidoRetiradoID" />
+                <ScalarProperty Name="NroPedidoRetirado" ColumnName="NroPedidoRetirado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AsignaRetiroTecnico" FunctionName="TropaNerdModel.Store.AsignaRetiroTecnico" />
+          <FunctionImportMapping FunctionImportName="FinalizaRetiroTecnico" FunctionName="TropaNerdModel.Store.FinalizaRetiroTecnico" />
+          <FunctionImportMapping FunctionImportName="GetClientesAll" FunctionName="TropaNerdModel.Store.GetClientesAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetClientesAll">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="NroCliente" ColumnName="NroCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRetirosaCerrar" FunctionName="TropaNerdModel.Store.GetRetirosaCerrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetRetirosaCerrar">
+                <ScalarProperty Name="PedidoRetiradoID" ColumnName="PedidoRetiradoID" />
+                <ScalarProperty Name="NroPedidoRetirado" ColumnName="NroPedidoRetirado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getPedidosAlerta" FunctionName="TropaNerdModel.Store.getPedidosAlerta" />
+          <FunctionImportMapping FunctionImportName="GetPedidosBYtecnicoID" FunctionName="TropaNerdModel.Store.GetPedidosBYtecnicoID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosBYtecnicoID">
+                <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+                <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Problema" ColumnName="Problema" />
+                <ScalarProperty Name="Horario" ColumnName="Horario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPedidosDescripcion" FunctionName="TropaNerdModel.Store.GetPedidosDescripcion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosDescripcion">
+                <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+                <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Problema" ColumnName="Problema" />
+                <ScalarProperty Name="Horario" ColumnName="Horario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPedidosCerrados" FunctionName="TropaNerdModel.Store.GetPedidosCerrados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosCerrados">
+                <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaPasaTecnico" ColumnName="FechaPasaTecnico" />
+                <ScalarProperty Name="FechaTomaTecnico" ColumnName="FechaTomaTecnico" />
+                <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="tecnico" ColumnName="tecnico" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAlertaClientes" FunctionName="TropaNerdModel.Store.getAlertaClientes" />
+          <FunctionImportMapping FunctionImportName="GetClientesEncuesats" FunctionName="TropaNerdModel.Store.GetClientesEncuesats">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetClientesEncuesats">
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTecnicosEncuesats" FunctionName="TropaNerdModel.Store.GetTecnicosEncuesats">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.GetTecnicosEncuesats">
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Tecnico" ColumnName="Tecnico" />
+                <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAlertaTecnicos" FunctionName="TropaNerdModel.Store.getAlertaTecnicos" />
+          <FunctionImportMapping FunctionImportName="UsuariosINS" FunctionName="TropaNerdModel.Store.UsuariosINS" />
+          <FunctionImportMapping FunctionImportName="getAdministradorPerfil" FunctionName="TropaNerdModel.Store.getAdministradorPerfil">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TropaNerdModel.getAdministradorPerfil">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateAdministrador" FunctionName="TropaNerdModel.Store.UpdateAdministrador" />
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

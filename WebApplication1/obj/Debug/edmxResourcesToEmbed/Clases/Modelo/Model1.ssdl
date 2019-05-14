@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TropaNerdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Areas">
+    <Key>
+      <PropertyRef Name="AreasID" />
+    </Key>
+    <Property Name="AreasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AreasDescrip" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Baja" Type="int" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteID" />
+    </Key>
+    <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NroCliente" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Apellido" Type="varchar" MaxLength="100" />
+    <Property Name="Mail" Type="varchar" MaxLength="100" />
+    <Property Name="Telefono" Type="varchar" MaxLength="100" />
+    <Property Name="TipoDocumento" Type="varchar" MaxLength="20" />
+    <Property Name="NroDocumento" Type="varchar" MaxLength="50" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="100" />
+    <Property Name="DomicilioID" Type="int" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="TipoFactura" Type="varchar" MaxLength="1" />
+    <Property Name="Baja" Type="int" />
+  </EntityType>
+  <EntityType Name="Domicilio">
+    <Key>
+      <PropertyRef Name="DomicilioID" />
+    </Key>
+    <Property Name="DomicilioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Calle" Type="varchar" MaxLength="200" />
+    <Property Name="CalleNro" Type="varchar" MaxLength="100" />
+    <Property Name="CodigoPostal" Type="varchar" MaxLength="10" />
+    <Property Name="Localidad" Type="varchar" MaxLength="150" />
+    <Property Name="Provincia" Type="varchar" MaxLength="150" />
+    <Property Name="Pais" Type="varchar" MaxLength="50" />
+    <Property Name="Baja" Type="int" />
+  </EntityType>
+  <EntityType Name="Encuestas">
+    <Key>
+      <PropertyRef Name="EncuestasID" />
+    </Key>
+    <Property Name="EncuestasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TecnicoID" Type="int" />
+    <Property Name="ClienteID" Type="int" />
+    <Property Name="Calificacin" Type="int" />
+    <Property Name="Observacion" Type="varchar" MaxLength="200" />
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="PedidoReparacionID" Type="int" />
+  </EntityType>
+  <EntityType Name="PedidoReparacion">
+    <Key>
+      <PropertyRef Name="PedidoReparacionID" />
+    </Key>
+    <Property Name="PedidoReparacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PedidoReparacionDetalleID" Type="int" />
+    <Property Name="NroPedidoReparacion" Type="int" />
+    <Property Name="ClienteID" Type="int" Nullable="false" />
+    <Property Name="DomiclioID" Type="int" Nullable="false" />
+    <Property Name="FechaIngreso" Type="datetime" />
+    <Property Name="FechaPasaTecnico" Type="datetime" />
+    <Property Name="FechaTomaTecnico" Type="datetime" />
+    <Property Name="FechaCierre" Type="datetime" />
+    <Property Name="DescripcionProblema" Type="varchar" MaxLength="200" />
+    <Property Name="HorarioDisponible" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PedidoReparacionDetalle">
+    <Key>
+      <PropertyRef Name="PedidoReparacionDetalleID" />
+    </Key>
+    <Property Name="PedidoReparacionDetalleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArticuloID" Type="int" Nullable="false" />
+    <Property Name="Latitud" Type="varchar" MaxLength="100" />
+    <Property Name="Longitud" Type="varchar" MaxLength="100" />
+    <Property Name="AreasID" Type="int" />
+  </EntityType>
+  <EntityType Name="Tecnico">
+    <Key>
+      <PropertyRef Name="TecnicoID" />
+    </Key>
+    <Property Name="TecnicoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NroTecnico" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Apellido" Type="varchar" MaxLength="100" />
+    <Property Name="DomicilioID" Type="int" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="TipoDocumento" Type="varchar" MaxLength="20" />
+    <Property Name="NroDocumento" Type="varchar" MaxLength="50" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="Mail" Type="varchar" MaxLength="100" />
+    <Property Name="Imagen1" Type="varchar" MaxLength="100" />
+    <Property Name="Imagen2" Type="varchar" MaxLength="100" />
+    <Property Name="Baja" Type="int" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="UsuariosID" />
+    </Key>
+    <Property Name="UsuariosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NroUsuario" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Apellido" Type="varchar" MaxLength="100" />
+    <Property Name="Pass" Type="varchar" MaxLength="100" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="ClienteID" Type="int" />
+    <Property Name="TecnicoID" Type="int" />
+    <Property Name="Baja" Type="int" />
+  </EntityType>
+  <Association Name="FK_Cliente_Domicilio">
+    <End Role="Domicilio" Type="Self.Domicilio" Multiplicity="0..1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Domicilio">
+        <PropertyRef Name="DomicilioID" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="DomicilioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PedidoReparacion_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="PedidoReparacion" Type="Self.PedidoReparacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteID" />
+      </Principal>
+      <Dependent Role="PedidoReparacion">
+        <PropertyRef Name="ClienteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tecnico_Domicilio1">
+    <End Role="Domicilio" Type="Self.Domicilio" Multiplicity="0..1" />
+    <End Role="Tecnico" Type="Self.Tecnico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Domicilio">
+        <PropertyRef Name="DomicilioID" />
+      </Principal>
+      <Dependent Role="Tecnico">
+        <PropertyRef Name="DomicilioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="getAdministradorPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+    <Parameter Name="AdministradorID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAlertaClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+    <Parameter Name="ClienteID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAlertaTecnicos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+    <Parameter Name="TecnicoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetClientesEncuesats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+    <Parameter Name="tecnicoid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetTecnicosEncuesats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+    <Parameter Name="ClienteiD" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateAdministrador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Brigada2018">
+    <Parameter Name="AdminID" Type="int" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+    <Parameter Name="Baja" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AsignaRetiroTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PedidoRetirado" Type="int" Mode="In" />
+    <Parameter Name="tecnicoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CerrarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PedidoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ClienteINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="Mail" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+    <Parameter Name="TipoDocumentoID" Type="varchar" Mode="In" />
+    <Parameter Name="NroDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="razonSocial" Type="varchar" Mode="In" />
+    <Parameter Name="DomicilioID" Type="int" Mode="In" />
+    <Parameter Name="Tipofacturacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ClientesPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clienteID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ClientesPerfilUPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="Mail" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+    <Parameter Name="RazonSocial" Type="varchar" Mode="In" />
+    <Parameter Name="TipoFactura" Type="varchar" Mode="In" />
+    <Parameter Name="Calle" Type="varchar" Mode="In" />
+    <Parameter Name="CalleNro" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoPostal" Type="varchar" Mode="In" />
+    <Parameter Name="Localidad" Type="varchar" Mode="In" />
+    <Parameter Name="Provincia" Type="varchar" Mode="In" />
+    <Parameter Name="Pais" Type="varchar" Mode="In" />
+    <Parameter Name="ClienteID" Type="int" Mode="In" />
+    <Parameter Name="DomicilioID" Type="int" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="FinalizaRetiroTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PedidoRetirado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getAreasALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetArticulosByArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AreaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetClientesAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetPedidosACerrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tecnicoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getPedidosAlerta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetPedidosBYtecnicoID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TecnicoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPedidosCerrados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fechaDesde" Type="datetime" Mode="In" />
+    <Parameter Name="fechahasta" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetPedidosDescripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PedidoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPedidosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetPerfilTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tecnicoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetRetirosaCerrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetRetirosDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getTecnicosALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PedidoReparacionDetalleINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticuloID" Type="int" Mode="In" />
+    <Parameter Name="Latitud" Type="varchar" Mode="In" />
+    <Parameter Name="Longitud" Type="varchar" Mode="In" />
+    <Parameter Name="AreasID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PedidoReparacionINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClienteID" Type="int" Mode="In" />
+    <Parameter Name="DomicilioID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="PedidoReparacionDetalleID" Type="int" Mode="In" />
+    <Parameter Name="Horario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PredidoTecnicoINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PedidoReparacionID" Type="int" Mode="In" />
+    <Parameter Name="tecnicoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RetiroINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PedidoReparacionID" Type="int" Mode="In" />
+    <Parameter Name="Motivo" Type="varchar" Mode="In" />
+    <Parameter Name="Detalle" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="TecnicoINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="Mail" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+    <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="NroDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="DomicilioID" Type="int" Mode="In" />
+    <Parameter Name="imagen1" Type="varchar" Mode="In" />
+    <Parameter Name="imagen2" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="TecnicosPerfilUPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="Mail" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+    <Parameter Name="imagen1" Type="varchar" Mode="In" />
+    <Parameter Name="imagen2" Type="varchar" Mode="In" />
+    <Parameter Name="Calle" Type="varchar" Mode="In" />
+    <Parameter Name="CalleNro" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoPostal" Type="varchar" Mode="In" />
+    <Parameter Name="Localidad" Type="varchar" Mode="In" />
+    <Parameter Name="Provincia" Type="varchar" Mode="In" />
+    <Parameter Name="Pais" Type="varchar" Mode="In" />
+    <Parameter Name="TecnicoID" Type="int" Mode="In" />
+    <Parameter Name="DomicilioID" Type="int" Mode="In" />
+    <Parameter Name="TipoDoc" Type="varchar" Mode="In" />
+    <Parameter Name="nroDoc" Type="varchar" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+    <Parameter Name="baja" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TomarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PedidoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UsuariosINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="ClienteiID" Type="int" Mode="In" />
+    <Parameter Name="TecnicoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ValidaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="Pass" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="TropaNerdModelStoreContainer">
+    <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Domicilio" EntityType="Self.Domicilio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Encuestas" EntityType="Self.Encuestas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PedidoReparacion" EntityType="Self.PedidoReparacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PedidoReparacionDetalle" EntityType="Self.PedidoReparacionDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tecnico" EntityType="Self.Tecnico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cliente_Domicilio" Association="Self.FK_Cliente_Domicilio">
+      <End Role="Domicilio" EntitySet="Domicilio" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PedidoReparacion_Cliente" Association="Self.FK_PedidoReparacion_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="PedidoReparacion" EntitySet="PedidoReparacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tecnico_Domicilio1" Association="Self.FK_Tecnico_Domicilio1">
+      <End Role="Domicilio" EntitySet="Domicilio" />
+      <End Role="Tecnico" EntitySet="Tecnico" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TropaNerdModelStoreContainer" CdmEntityContainer="TropaNerdEntities">
+    <FunctionImportMapping FunctionImportName="ValidaUsuario" FunctionName="TropaNerdModel.Store.ValidaUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetValidaUsuario">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="TropaNerdModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+          <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="NroUsuario" ColumnName="NroUsuario" />
+          <ScalarProperty Name="UsuariosID" ColumnName="UsuariosID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Domicilio">
+      <EntityTypeMapping TypeName="TropaNerdModel.Domicilio">
+        <MappingFragment StoreEntitySet="Domicilio">
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="CalleNro" ColumnName="CalleNro" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getAreasALL" FunctionName="TropaNerdModel.Store.getAreasALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.getAreasALL">
+          <ScalarProperty Name="AreasID" ColumnName="AreasID" />
+          <ScalarProperty Name="AreasDescrip" ColumnName="AreasDescrip" />
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetArticulosByArea" FunctionName="TropaNerdModel.Store.GetArticulosByArea">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetArticulosByArea">
+          <ScalarProperty Name="ArticulosID" ColumnName="ArticulosID" />
+          <ScalarProperty Name="AreasID" ColumnName="AreasID" />
+          <ScalarProperty Name="ArticulosDescrip" ColumnName="ArticulosDescrip" />
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Areas">
+      <EntityTypeMapping TypeName="TropaNerdModel.Areas">
+        <MappingFragment StoreEntitySet="Areas">
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+          <ScalarProperty Name="AreasDescrip" ColumnName="AreasDescrip" />
+          <ScalarProperty Name="AreasID" ColumnName="AreasID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Encuestas">
+      <EntityTypeMapping TypeName="TropaNerdModel.Encuestas">
+        <MappingFragment StoreEntitySet="Encuestas">
+          <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Calificacin" ColumnName="Calificacin" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+          <ScalarProperty Name="EncuestasID" ColumnName="EncuestasID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ClientesPerfilUPD" FunctionName="TropaNerdModel.Store.ClientesPerfilUPD" />
+    <FunctionImportMapping FunctionImportName="PedidoReparacionDetalleINS" FunctionName="TropaNerdModel.Store.PedidoReparacionDetalleINS" />
+    <FunctionImportMapping FunctionImportName="PedidoReparacionINS" FunctionName="TropaNerdModel.Store.PedidoReparacionINS" />
+    <EntitySetMapping Name="PedidoReparacion">
+      <EntityTypeMapping TypeName="TropaNerdModel.PedidoReparacion">
+        <MappingFragment StoreEntitySet="PedidoReparacion">
+          <ScalarProperty Name="FechaTomaTecnico" ColumnName="FechaTomaTecnico" />
+          <ScalarProperty Name="FechaPasaTecnico" ColumnName="FechaPasaTecnico" />
+          <ScalarProperty Name="HorarioDisponible" ColumnName="HorarioDisponible" />
+          <ScalarProperty Name="DescripcionProblema" ColumnName="DescripcionProblema" />
+          <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="DomiclioID" ColumnName="DomiclioID" />
+          <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+          <ScalarProperty Name="PedidoReparacionDetalleID" ColumnName="PedidoReparacionDetalleID" />
+          <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PedidoReparacionDetalle">
+      <EntityTypeMapping TypeName="TropaNerdModel.PedidoReparacionDetalle">
+        <MappingFragment StoreEntitySet="PedidoReparacionDetalle">
+          <ScalarProperty Name="AreasID" ColumnName="AreasID" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="ArticuloID" ColumnName="ArticuloID" />
+          <ScalarProperty Name="PedidoReparacionDetalleID" ColumnName="PedidoReparacionDetalleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="TropaNerdModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+          <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="NroCliente" ColumnName="NroCliente" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Cliente_Domicilio" TypeName="TropaNerdModel.FK_Cliente_Domicilio" StoreEntitySet="Cliente">
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+      </EndProperty>
+      <EndProperty Name="Domicilio">
+        <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+      </EndProperty>
+      <Condition ColumnName="DomicilioID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_PedidoReparacion_Cliente" TypeName="TropaNerdModel.FK_PedidoReparacion_Cliente" StoreEntitySet="PedidoReparacion">
+      <EndProperty Name="PedidoReparacion">
+        <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+      </EndProperty>
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="TecnicoSet">
+      <EntityTypeMapping TypeName="TropaNerdModel.Tecnico">
+        <MappingFragment StoreEntitySet="Tecnico">
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+          <ScalarProperty Name="Imagen2" ColumnName="Imagen2" />
+          <ScalarProperty Name="Imagen1" ColumnName="Imagen1" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="NroTecnico" ColumnName="NroTecnico" />
+          <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Tecnico_Domicilio11" TypeName="TropaNerdModel.FK_Tecnico_Domicilio11" StoreEntitySet="Tecnico">
+      <EndProperty Name="Tecnico1">
+        <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+      </EndProperty>
+      <EndProperty Name="Domicilio">
+        <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+      </EndProperty>
+      <Condition ColumnName="DomicilioID" IsNull="false" />
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="ClienteINS" FunctionName="TropaNerdModel.Store.ClienteINS" />
+    <FunctionImportMapping FunctionImportName="ClientesPerfil" FunctionName="TropaNerdModel.Store.ClientesPerfil">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.ClientesPerfil">
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="NroCliente" ColumnName="NroCliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+          <ScalarProperty Name="BajaCLI" ColumnName="BajaCLI" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="CalleNro" ColumnName="CalleNro" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TecnicoINS" FunctionName="TropaNerdModel.Store.TecnicoINS" />
+    <FunctionImportMapping FunctionImportName="GetPerfilTecnico" FunctionName="TropaNerdModel.Store.GetPerfilTecnico">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetPerfilTecnico">
+          <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Imagen1" ColumnName="Imagen1" />
+          <ScalarProperty Name="Imagen2" ColumnName="Imagen2" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="CalleNro" ColumnName="CalleNro" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TecnicosPerfilUPD" FunctionName="TropaNerdModel.Store.TecnicosPerfilUPD" />
+    <FunctionImportMapping FunctionImportName="PredidoTecnicoINS" FunctionName="TropaNerdModel.Store.PredidoTecnicoINS" />
+    <FunctionImportMapping FunctionImportName="GetPedidosDisponibles" FunctionName="TropaNerdModel.Store.GetPedidosDisponibles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosDisponibles">
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+          <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+          <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getTecnicosALL" FunctionName="TropaNerdModel.Store.getTecnicosALL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.getTecnicosALL">
+          <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+          <ScalarProperty Name="NroTecnico" ColumnName="NroTecnico" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Imagen1" ColumnName="Imagen1" />
+          <ScalarProperty Name="Imagen2" ColumnName="Imagen2" />
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TomarPedido" FunctionName="TropaNerdModel.Store.TomarPedido" />
+    <FunctionImportMapping FunctionImportName="GetPedidosACerrar" FunctionName="TropaNerdModel.Store.GetPedidosACerrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosACerrar">
+          <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+          <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CerrarPedido" FunctionName="TropaNerdModel.Store.CerrarPedido" />
+    <FunctionImportMapping FunctionImportName="RetiroINS" FunctionName="TropaNerdModel.Store.RetiroINS" />
+    <FunctionImportMapping FunctionImportName="GetRetirosDisponibles" FunctionName="TropaNerdModel.Store.GetRetirosDisponibles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetRetirosDisponibles">
+          <ScalarProperty Name="PedidoRetiradoID" ColumnName="PedidoRetiradoID" />
+          <ScalarProperty Name="NroPedidoRetirado" ColumnName="NroPedidoRetirado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AsignaRetiroTecnico" FunctionName="TropaNerdModel.Store.AsignaRetiroTecnico" />
+    <FunctionImportMapping FunctionImportName="FinalizaRetiroTecnico" FunctionName="TropaNerdModel.Store.FinalizaRetiroTecnico" />
+    <FunctionImportMapping FunctionImportName="GetClientesAll" FunctionName="TropaNerdModel.Store.GetClientesAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetClientesAll">
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="NroCliente" ColumnName="NroCliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="DomicilioID" ColumnName="DomicilioID" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetRetirosaCerrar" FunctionName="TropaNerdModel.Store.GetRetirosaCerrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetRetirosaCerrar">
+          <ScalarProperty Name="PedidoRetiradoID" ColumnName="PedidoRetiradoID" />
+          <ScalarProperty Name="NroPedidoRetirado" ColumnName="NroPedidoRetirado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getPedidosAlerta" FunctionName="TropaNerdModel.Store.getPedidosAlerta" />
+    <FunctionImportMapping FunctionImportName="GetPedidosBYtecnicoID" FunctionName="TropaNerdModel.Store.GetPedidosBYtecnicoID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosBYtecnicoID">
+          <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+          <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+          <ScalarProperty Name="Problema" ColumnName="Problema" />
+          <ScalarProperty Name="Horario" ColumnName="Horario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPedidosDescripcion" FunctionName="TropaNerdModel.Store.GetPedidosDescripcion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosDescripcion">
+          <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+          <ScalarProperty Name="PedidoReparacionID" ColumnName="PedidoReparacionID" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+          <ScalarProperty Name="Problema" ColumnName="Problema" />
+          <ScalarProperty Name="Horario" ColumnName="Horario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPedidosCerrados" FunctionName="TropaNerdModel.Store.GetPedidosCerrados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetPedidosCerrados">
+          <ScalarProperty Name="NroPedidoReparacion" ColumnName="NroPedidoReparacion" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="FechaPasaTecnico" ColumnName="FechaPasaTecnico" />
+          <ScalarProperty Name="FechaTomaTecnico" ColumnName="FechaTomaTecnico" />
+          <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="tecnico" ColumnName="tecnico" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAlertaClientes" FunctionName="TropaNerdModel.Store.getAlertaClientes" />
+    <FunctionImportMapping FunctionImportName="GetClientesEncuesats" FunctionName="TropaNerdModel.Store.GetClientesEncuesats">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetClientesEncuesats">
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTecnicosEncuesats" FunctionName="TropaNerdModel.Store.GetTecnicosEncuesats">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.GetTecnicosEncuesats">
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Tecnico" ColumnName="Tecnico" />
+          <ScalarProperty Name="TecnicoID" ColumnName="TecnicoID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAlertaTecnicos" FunctionName="TropaNerdModel.Store.getAlertaTecnicos" />
+    <FunctionImportMapping FunctionImportName="UsuariosINS" FunctionName="TropaNerdModel.Store.UsuariosINS" />
+    <FunctionImportMapping FunctionImportName="getAdministradorPerfil" FunctionName="TropaNerdModel.Store.getAdministradorPerfil">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TropaNerdModel.getAdministradorPerfil">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateAdministrador" FunctionName="TropaNerdModel.Store.UpdateAdministrador" />
+  </EntityContainerMapping>
+</Mapping>
